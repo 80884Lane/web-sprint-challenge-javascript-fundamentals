@@ -29,6 +29,7 @@ function summation(num) {
  {
   count = count + num[i]
 }
+return count;
 }
 
 // 🦁🦁🦁 Topic 2: ADVANCED Array Methods 🦁🦁🦁
@@ -54,18 +55,24 @@ const zooAnimals = [
     const displayNames = [];
     zooAnimals.forEach(function(item){
       return displayNames.push(`Name: ${item.animal_name}, Scientific: ${item.scientific_name}`);
+      return displayNames;
     });
+  
   }
+
   
 
   /* 🦁🦁🦁 Request 2: .map() 🦁🦁🦁
   The zoos need a list of all their animal's names (animal_name only) converted to lower case. Using map, create a new array of strings named lowCaseAnimalNames, each string following this pattern: "jackal, asiatic". Log the resut.
   */
-  function lowerCaseNames(){
-   return zooAnimals.map(([animal_name]) => {
-    return `${animal_name}`.toLowercase();
-   });
-  }  
+  function lowerCaseNames(data){
+    const lowCaseAnimalNames = data.map(function(item){
+      return [item.animal_name].toLowerCase();
+    });
+  
+    }
+   
+    
    
   
   
@@ -84,9 +91,9 @@ const zooAnimals = [
   The zoos need to know their total animal population across the United States. Find the total population from all the zoos using the .reduce() method. Remember the reduce method takes two arguments: a callback (which itself takes two args), and an initial value for the count.
   */
   function USApop(data){
-    let totalPop = data.reduce((accumulator, pop) => {
-      return accumulator + pop[population];
-    }, 0)
+    let totalPop = data.reduce(function(accumulator, population) {
+      return accumulator + population;
+    }, 0);
   }
   
   
@@ -97,10 +104,8 @@ const zooAnimals = [
     * The last parameter accepts a callback
     * The consume function should return the invocation of cb, passing a and b into cb as arguments
   */
-  function consume(){
-    const a = a;
-    const b = b;
-    const cb = add(a, b);
+  function consume(item1, item2, cb){
+    return cb(item1, item2);
   }
  
   
@@ -175,12 +180,13 @@ function CuboidMaker(attributes){
   Create a cuboid object that uses the new keyword to use our CuboidMaker constructor
   Add properties and values of length: 4, width: 5, and height: 5 to cuboid. */
 
-  const cubiodOne = new CuboidMaker({
-    length : 4,
-    width : 5,
+  const cubiod = new CuboidMaker({
+    length: 4,
+    width: 5,
     height: 5,
+  });
 
-  })
+  
 
 
 
@@ -204,8 +210,8 @@ class CuboidMakerTwo{
 
 
 //🦄🦄🦄 Test your volume and surfaceArea methods by uncommenting the logs below: 🦄🦄🦄
-console.log(cuboidTwo.volume()); // 100
-console.log(cuboidTwo.surfaceArea()); // 130
+// console.log(cuboidTwo.volume()); // 100
+// console.log(cuboidTwo.surfaceArea()); // 130
 
 
 
