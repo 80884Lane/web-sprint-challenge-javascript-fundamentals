@@ -25,9 +25,8 @@ myFunction();
 /* Create a function called `summation` that accepts a parameter and uses a counter to return the summation of that number. For example, `summation(4)` should return 10 because 1+2+3+4 is 10. Note, you may use a for loop for this function if you wish */
 function summation(num) {
   let count = 0;
-  for(let i = 0; i < num; i++)
- {
-  count = count + num[i]
+  for(let i = 0; i < num + 1; i++){
+  count += i;
 }
 return count;
 }
@@ -51,14 +50,16 @@ const zooAnimals = [
   /* 🦁🦁🦁 Request 1: .forEach() 🦁🦁🦁
   The zoos want to display both the scientific name and the animal name in front of the habitats. Populate the displayNames array with only the animal_name and scientific_name of each animal. displayNames will be an array of strings, and each string should follow this pattern: "Name: Jackal, asiatic, Scientific: Canis aureus."
   */
-  function animalNames(){
-    const displayNames = [];
-    zooAnimals.forEach(function(item){
-      return displayNames.push(`Name: ${item.animal_name}, Scientific: ${item.scientific_name}`);
-      return displayNames;
-    });
-  
-  }
+ function animalNames(data){
+  const displayNames = [];
+ data.forEach(function(item){
+    displayNames.push(`Name: ${item.animal_name}, Scientific: ${item.scientific_name}`);
+    return displayNames;
+  });
+
+}
+
+animalNames(zooAnimals);
 
   
 
@@ -170,7 +171,7 @@ function CuboidMaker(attributes){
   2 * (length * width + length * height + width * height)  */
 
   CuboidMaker.prototype.surfaceArea = function(length, width, height){
-    return 2 * (length * width + length * height + width * height);
+    return ((length * width ) + (length * height) + (width * height)) * 2;
 
   }
 
@@ -192,8 +193,8 @@ function CuboidMaker(attributes){
 
 // 🐴🐴🐴 Test your volume and surfaceArea methods by uncommenting the logs below: 🐴🐴🐴
 // ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️
-// console.log(cuboid.volume()); // 100
-// console.log(cuboid.surfaceArea()); // 130
+console.log(cuboid.volume()); // 100
+console.log(cuboid.surfaceArea()); // 130
  
 
 // 🦄🦄🦄 Topic 4: Classes 🦄🦄🦄 //
@@ -205,13 +206,21 @@ class CuboidMakerTwo{
     this.height = attributes.height;
 
   }
-
+  volume(){
+    return length * width * height;
 }
-
-
+  surfaceArea(){
+    return (length * width + length * height + width * height) * 2;
+  }
+}
+class cubiodTwo extends CuboidMakerTwo{
+  constructor(attributes){
+    super(attributes);
+  }
+}
 //🦄🦄🦄 Test your volume and surfaceArea methods by uncommenting the logs below: 🦄🦄🦄
-// console.log(cuboidTwo.volume()); // 100
-// console.log(cuboidTwo.surfaceArea()); // 130
+console.log(cuboidTwo.volume()); // 100
+console.log(cuboidTwo.surfaceArea()); // 130
 
 
 
